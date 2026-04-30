@@ -1,15 +1,109 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>Kimiclaw — FAILED (no deliverable)</title>
-<style>body{font-family:system-ui,sans-serif;background:#1f2832;color:#f3ece0;display:grid;place-items:center;min-height:100vh;margin:0;padding:32px}main{max-width:60ch;line-height:1.6}h1{color:#b3522e;font-size:32px;margin:0 0 12px;font-weight:500}.tag{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6e8a8d;margin-bottom:24px}code{background:rgba(243,236,224,0.08);padding:2px 8px;border-radius:3px;font-size:14px;color:#f7eedd}p{margin:14px 0}.k{color:#cbb89a}</style>
-</head><body><main>
-<p class="tag">Kimiclaw solo · classic mode · 2 agents · 6 steps</p>
-<h1>FAILED — no deliverable produced</h1>
-<p>The Kimi swarm dispatch ran for <strong>513 seconds</strong> (8.5 min) and returned <code>status=completed</code> but the deliverable field was empty. The swarm spent its 6-step budget on planning/decomposition rather than producing the requested single-file HTML.</p>
-<p>This matches the documented KCS limitation: <span class="k">"KCS over-decomposes small tasks — driver uses classic mode... when the swarm still produces zero output the driver records &lt;silent: kcs_zero_output&gt;"</span> (from the /solve-room skill spec).</p>
-<p>Raw response from <code>/api/v2/swarm/swarm_ff6aee838bde</code>:</p>
-<pre><code>swarm_id=swarm_ff6aee838bde
-status=completed
-deliverable: (empty)
-duration_sec: 513</code></pre>
-<p style="margin-top:32px;color:#6e8a8d;font-size:14px">This is honest evidence in the benchmark: KCS in classic-mode-2-agents-6-steps cannot handle a "build me a single-file HTML page" prompt solo. It needs either heavier step budget, persona+verify mode, or a different problem shape (more decomposable than a single artifact).</p>
-</main></body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiln & Tide Ceramics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f7f5f2;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px solid #d4c4b0;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #5a4a3a;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        .tagline {
+            font-style: italic;
+            color: #7a6a5a;
+            font-size: 1.1rem;
+        }
+        .about {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+        .gallery {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .piece {
+            text-align: center;
+            max-width: 220px;
+        }
+        .piece-box {
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            margin: 0 auto 0.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .driftwood { background: #a8a39d; }
+        .tidepool { background: #6b9e9a; }
+        .saltfire { background: #b35d46; }
+        .caption {
+            font-size: 0.9rem;
+            color: #5a4a3a;
+        }
+        .caption strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        .contact {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 2px solid #d4c4b0;
+            font-size: 0.95rem;
+            color: #5a4a3a;
+        }
+        .contact a { color: #5a4a3a; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Kiln & Tide</h1>
+        <p class="tagline">Shaped by hand, tempered by tide.</p>
+    </header>
+
+    <section class="about">
+        <p>Kiln & Tide is a coastal ceramics studio shaping functional art from the earth beneath our feet. We draw inspiration from the ocean's rhythm, crafting pieces that carry the quiet weight of tides and the raw warmth of the kiln. Each vessel is thrown, fired, and finished by hand in our seaside workspace.</p>
+    </section>
+
+    <section class="gallery">
+        <div class="piece">
+            <div class="piece-box driftwood"></div>
+            <p class="caption"><strong>Driftwood Vase</strong> A tall, weathered vessel with ash-glaze running like seafoam down its flanks, built to hold the wild stems of coastal gardens.</p>
+        </div>
+        <div class="piece">
+            <div class="piece-box tidepool"></div>
+            <p class="caption"><strong>Tide Pool Bowl</strong> Shallow and wide, its interior glitters with crystalline blues and greens that deepen like water held in rocky shore hollows after the sea retreats.</p>
+        </div>
+        <div class="piece">
+            <div class="piece-box saltfire"></div>
+            <p class="caption"><strong>Salt-Fire Teapot</strong> Thrown thin and kissed by flame and salt vapor in the wood kiln, it pours tea with a quiet, steady balance.</p>
+        </div>
+    </section>
+
+    <footer class="contact">
+        <p>Visit the studio at 42 Shoreline Drive, Moss Beach, CA, or write to us at <a href="mailto:hello@kilnandtide.com">hello@kilnandtide.com</a>.</p>
+    </footer>
+</body>
+</html>

@@ -705,11 +705,11 @@
             </div>
             <div class="signal-row">
               <div class="signal-label">Failure Worth Keeping</div>
-              <div class="signal-value">KCS: empty deliverable after 513s</div>
+              <div class="signal-value">KCS: 2/2 real agents, 6.95 min (post-fix)</div>
             </div>
           </div>
           <div class="workspace-note">
-            All four same-origin subpaths (<span class="mono">./anismin/</span>, <span class="mono">./meridian/</span>, <span class="mono">./claude-cli/</span>, <span class="mono">./kimiclaw/</span>) are deployed on this Pages site and rendered live in the iframes below. Three are real solo-brain artifacts; <span class="mono">./kimiclaw/</span> shows a FAILED placeholder because the Kimi swarm produced an empty deliverable after 513s &mdash; honest visible failure, not a hidden bug.
+            All four same-origin subpaths (<span class="mono">./anismin/</span>, <span class="mono">./meridian/</span>, <span class="mono">./claude-cli/</span>, <span class="mono">./kimiclaw/</span>) are deployed on this Pages site and rendered live in the iframes below. The first three are solo-brain artifacts. <span class="mono">./kimiclaw/</span> is the multi-agent swarm output. The initial attempt produced an empty deliverable; root cause was a three-layer engine fault (brain-cascade unreachability inside the container, step-budget underflow at small max_steps, and adapter timeout caps too aggressive for HTML generation), fixed across KimiClawSwarm commits <span class="mono">17292db</span>, <span class="mono">7cf44a2</span>, and <span class="mono">d3c6c07</span>. The current iframe shows the post-fix run where Scribe-1 (writer) and Leviathan-2 (HTML coder) both succeeded via the kimi tier-1 brain.
           </div>
         </aside>
       </div>
