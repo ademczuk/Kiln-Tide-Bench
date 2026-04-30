@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiln &amp; Tide — Wheel-thrown ceramics from Penobscot Bay</title>
+  <meta name="description" content="Two sisters, one kiln, one wood-fired studio at the edge of the bay. Small-batch ceramics shipped from coastal Maine.">
+  <style>
+    :root {
+      --paper: #f3ece0;
+      --ink: #1f2832;
+      --ink-soft: #4a5560;
+      --rule: #cbb89a;
+      --salt: #e9efee;
+      --tide: #6e8a8d;
+      --kiln: #b3522e;
+      --kiln-deep: #7a3520;
+      --kelp: #4d6149;
+      --warm: #f7eedd;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Hoefler Text", Charter, Cambria, Georgia, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(255,255,255,0.6), transparent 30%),
+        radial-gradient(ellipse at 88% 92%, rgba(110,138,141,0.18), transparent 36%),
+        var(--paper);
+      line-height: 1.55;
+      font-size: 17px;
+      letter-spacing: 0.005em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(31,40,50,0.045) 1px, transparent 0),
+        radial-gradient(circle at 7px 11px, rgba(179,82,46,0.025) 1px, transparent 0);
+      background-size: 4px 4px, 13px 13px;
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* MASTHEAD */
+    header.mast {
+      padding: 28px 0 18px;
+      border-bottom: 1.5px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .mast-name {
+      font-family: "Iowan Old Style", "Hoefler Text", Georgia, serif;
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+    .mast-name .amp {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--kiln);
+      padding: 0 0.12em;
+    }
+
+    .mast-meta {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .mast-meta a {
+      color: inherit;
+      text-decoration: none;
+      margin-left: 18px;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 200ms;
+    }
+    .mast-meta a:hover { border-color: var(--ink-soft); }
+
+    /* HERO */
+    .hero {
+      padding: 56px 0 40px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: end;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5.6vw, 62px);
+      line-height: 1.04;
+      margin: 0 0 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--kiln-deep);
+    }
+
+    .hero-lede {
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0 0 28px;
+      max-width: 36ch;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+    }
+    .hero-meta span strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .hero-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, var(--salt) 0%, var(--warm) 100%);
+      border: 1px solid var(--rule);
+      padding: 28px 26px;
+      position: relative;
+      box-shadow: 0 24px 48px -32px rgba(31,40,50,0.35);
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(110,138,141,0.35);
+      pointer-events: none;
+    }
+    .hero-card-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tide);
+      margin: 0 0 14px;
+    }
+    .hero-card h3 {
+      font-size: 22px;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+    .hero-card p {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+    .hero-card .firing {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px dotted var(--tide);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+    .hero-card .firing strong {
+      color: var(--kiln);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    /* COLLECTION */
+    .section-head {
+      padding: 56px 0 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 28px;
+    }
+    .section-head .kicker {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--tide);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-head h2 {
+      font-size: clamp(28px, 3.4vw, 38px);
+      margin: 0;
+      line-height: 1.15;
+      font-weight: 500;
+      max-width: 22ch;
+    }
+    .section-head .ledger {
+      font-size: 13px;
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+      text-align: right;
+    }
+    .section-head .ledger strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      letter-spacing: 0;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .pieces {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .piece {
+      background: var(--paper);
+      padding: 32px 28px 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+      position: relative;
+    }
+
+    .piece-glyph {
+      grid-column: 1 / -1;
+      height: 180px;
+      margin-bottom: 8px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--warm), var(--salt));
+      border: 1px solid rgba(203,184,154,0.7);
+    }
+    .piece-glyph::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12%;
+      width: 56%;
+      height: 76%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse 60% 50% at 50% 38%, rgba(255,255,255,0.55), transparent 65%),
+                  linear-gradient(180deg, var(--kiln) 0%, var(--kiln-deep) 78%);
+      border-radius: 50% 50% 18% 18%;
+      box-shadow: inset -10px -8px 22px rgba(0,0,0,0.18), 0 14px 18px -10px rgba(31,40,50,0.32);
+    }
+    .piece-glyph::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 24px;
+      background: linear-gradient(180deg, transparent, rgba(110,138,141,0.18) 60%, rgba(110,138,141,0.35));
+      mix-blend-mode: multiply;
+    }
+
+    /* per-piece glyph variations via overrides */
+    .piece.bowl .piece-glyph::before {
+      bottom: 8%;
+      width: 64%;
+      height: 36%;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,255,255,0.5), transparent 60%),
+                  linear-gradient(180deg, #d8a584, #aa6e51 70%);
+      border-radius: 50% 50% 50% 50% / 35% 35% 65% 65%;
+    }
+    .piece.vase .piece-glyph::before {
+      bottom: -6%;
+      width: 32%;
+      height: 92%;
+      background: radial-gradient(ellipse 70% 40% at 50% 18%, rgba(255,255,255,0.45), transparent 55%),
+                  linear-gradient(180deg, #e1c69b 0%, #b08c5d 60%, #7a5b34 100%);
+      border-radius: 38% 38% 22% 22% / 30% 30% 18% 18%;
+    }
+    .piece.plate .piece-glyph::before {
+      bottom: 18%;
+      width: 70%;
+      height: 18%;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,255,255,0.55), transparent 65%),
+                  linear-gradient(180deg, #e6e3da, #c1bcae 80%);
+      border-radius: 50%;
+    }
+
+    .piece-name {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      letter-spacing: -0.005em;
+    }
+    .piece-tag {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--tide);
+      margin: 0 0 10px;
+    }
+    .piece-blurb {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 32ch;
+      line-height: 1.5;
+    }
+    .piece-price {
+      grid-column: 2;
+      grid-row: 2 / 4;
+      align-self: start;
+      text-align: right;
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--ink);
+      padding-top: 4px;
+    }
+    .piece-price small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    /* STORY */
+    .story {
+      padding: 80px 0 64px;
+      display: grid;
+      grid-template-columns: 0.4fr 1fr;
+      gap: 48px;
+      border-top: 1.5px solid var(--rule);
+      margin-top: 48px;
+    }
+    .story-side {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tide);
+      padding-top: 6px;
+    }
+    .story-body h2 {
+      font-size: clamp(26px, 3.2vw, 32px);
+      margin: 0 0 24px;
+      font-weight: 500;
+      max-width: 28ch;
+      line-height: 1.18;
+    }
+    .story-body p {
+      font-size: 17.5px;
+      color: var(--ink);
+      max-width: 60ch;
+      margin: 0 0 16px;
+    }
+    .story-body p.byline {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tide);
+      margin-top: 8px;
+    }
+
+    /* CTA */
+    .cta {
+      margin-top: 24px;
+      background:
+        linear-gradient(155deg, var(--ink) 0%, #2c3a44 100%);
+      color: var(--paper);
+      padding: 56px 48px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      border: 1px solid var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 100% 0%, rgba(179,82,46,0.32), transparent 38%);
+      pointer-events: none;
+    }
+    .cta-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(243,236,224,0.62);
+      margin: 0 0 14px;
+    }
+    .cta h2 {
+      font-size: clamp(28px, 3.6vw, 36px);
+      margin: 0 0 14px;
+      font-weight: 500;
+      line-height: 1.2;
+      max-width: 18ch;
+    }
+    .cta p {
+      font-size: 15.5px;
+      color: rgba(243,236,224,0.78);
+      margin: 0;
+      max-width: 36ch;
+    }
+    form.signup {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+    form.signup label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(243,236,224,0.62);
+    }
+    form.signup .row {
+      display: flex;
+      gap: 8px;
+    }
+    form.signup input[type="email"] {
+      flex: 1;
+      padding: 14px 16px;
+      border: 1px solid rgba(243,236,224,0.35);
+      background: rgba(243,236,224,0.06);
+      color: var(--paper);
+      font-family: inherit;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      outline: none;
+      transition: border-color 180ms, background-color 180ms;
+    }
+    form.signup input[type="email"]::placeholder { color: rgba(243,236,224,0.4); }
+    form.signup input[type="email"]:focus {
+      border-color: var(--paper);
+      background: rgba(243,236,224,0.12);
+    }
+    form.signup button {
+      padding: 14px 22px;
+      border: 1px solid var(--paper);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 180ms, color 180ms;
+    }
+    form.signup button:hover {
+      background: var(--kiln);
+      color: var(--paper);
+      border-color: var(--kiln);
+    }
+    .signup-note {
+      font-size: 12px;
+      color: rgba(243,236,224,0.55);
+      margin-top: 4px;
+    }
+    .signup-success {
+      font-size: 13px;
+      color: var(--warm);
+      margin-top: 8px;
+      display: none;
+      letter-spacing: 0.04em;
+    }
+    .signup-success.shown { display: block; }
+
+    /* CONTACT */
+    .contact {
+      padding: 64px 0 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      border-top: 1px solid var(--rule);
+      margin-top: 56px;
+    }
+    .contact .col h4 {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tide);
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+    .contact .col p, .contact .col a {
+      font-size: 15px;
+      color: var(--ink);
+      margin: 0 0 6px;
+      text-decoration: none;
+      display: block;
+    }
+    .contact .col a:hover { color: var(--kiln); }
+
+    footer.foot {
+      padding: 32px 0 56px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+    footer.foot .colophon {
+      max-width: 38ch;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; }
+      .hero-meta { gap: 20px; }
+      .pieces { grid-template-columns: 1fr; }
+      .story { grid-template-columns: 1fr; gap: 16px; }
+      .cta { grid-template-columns: 1fr; padding: 40px 28px; }
+      .contact { grid-template-columns: 1fr; gap: 28px; }
+      .section-head { grid-template-columns: 1fr; }
+      .section-head .ledger { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="mast">
+      <div class="mast-name">Kiln <span class="amp">&amp;</span> Tide</div>
+      <nav class="mast-meta">
+        <a href="#collection">Collection</a>
+        <a href="#story">The Studio</a>
+        <a href="#visit">Visit</a>
+        <a href="#letter">Letter</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div>
+        <h1>Wheel-thrown work for <em>tide tables</em>, long suppers, and slow mornings.</h1>
+        <p class="hero-lede">
+          Two sisters, one kiln, one wood-fired studio at the edge of Penobscot Bay.
+          We throw in small batches between the spring thaw and the first hard frost,
+          and ship what survives the kiln to people who like a bit of fingerprint left in the rim.
+        </p>
+        <div class="hero-meta">
+          <span><strong>Spring 2026</strong>Firing №14</span>
+          <span><strong>54</strong>Pieces in this batch</span>
+          <span><strong>Stonington, ME</strong>Studio &amp; kiln</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <p class="hero-card-eyebrow">From the kiln</p>
+        <h3>Last firing notes</h3>
+        <p>
+          The April batch ran cooler than we wanted on the second day &mdash;
+          you'll see softer ash on the iron-rich pieces, more amber on the celadons.
+          We'd rather ship that than re-fire and lose the freshness.
+        </p>
+        <div class="firing">
+          <span>Cone 10 reduction</span>
+          <strong>April 14&ndash;16, 2026</strong>
+        </div>
+      </aside>
+    </section>
+
+    <section id="collection">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Spring 2026 &middot; Firing №14</span>
+          <h2>Made by hand. Marked by water and ash.</h2>
+        </div>
+        <div class="ledger">
+          Available now
+          <strong>4 pieces</strong>
+        </div>
+      </div>
+
+      <div class="pieces">
+
+        <article class="piece mug">
+          <div class="piece-glyph"></div>
+          <div>
+            <p class="piece-tag">N° 01 &middot; Drinkware</p>
+            <h3 class="piece-name">Drift Mug</h3>
+            <p class="piece-blurb">
+              Wheel-thrown stoneware with an iron-rich body and a thumb-rest pulled to fit your hand
+              after the third sip. Glazed inside in a soft fog blue.
+            </p>
+          </div>
+          <div class="piece-price">$42<small>Edition of 18</small></div>
+        </article>
+
+        <article class="piece bowl">
+          <div class="piece-glyph"></div>
+          <div>
+            <p class="piece-tag">N° 02 &middot; Tableware</p>
+            <h3 class="piece-name">Salt Bowl</h3>
+            <p class="piece-blurb">
+              Low cereal-and-soup bowl with a tide-marked rim and a hand-applied shell-pink wash
+              over dark stoneware. Dishwasher-safe; happier rinsed.
+            </p>
+          </div>
+          <div class="piece-price">$58<small>Edition of 12</small></div>
+        </article>
+
+        <article class="piece vase">
+          <div class="piece-glyph"></div>
+          <div>
+            <p class="piece-tag">N° 03 &middot; Vessels</p>
+            <h3 class="piece-name">Eelgrass Vase</h3>
+            <p class="piece-blurb">
+              Tall sculptural vessel for one stem or twelve, finished in a brushed slip
+              that catches afternoon window light. Each one unrepeatable.
+            </p>
+          </div>
+          <div class="piece-price">$128<small>Edition of 6</small></div>
+        </article>
+
+        <article class="piece plate">
+          <div class="piece-glyph"></div>
+          <div>
+            <p class="piece-tag">N° 04 &middot; Tableware</p>
+            <h3 class="piece-name">Ferry Plate</h3>
+            <p class="piece-blurb">
+              Side plate in gull-grey slip, sized for buttered toast or a slice of pie.
+              The ones with the slight wobble are our favourites.
+            </p>
+          </div>
+          <div class="piece-price">$36<small>Edition of 24</small></div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="story-side">The Studio</div>
+      <div class="story-body">
+        <h2>A kiln on a granite ledge, and the schedule of the bay.</h2>
+        <p>
+          Kiln &amp; Tide began in 2019 in a cedar-shingle outbuilding behind our grandfather's
+          house in Stonington. Margaret had quit a graphic design job in Brooklyn; June was teaching
+          high-school art and throwing on weekends. We bought a used Skutt kiln off a retiring potter
+          in Camden and drove it home through fog so thick we missed the turn twice.
+        </p>
+        <p>
+          We work to the rhythm of the bay. Spring through autumn we throw, trim, glaze, and fire.
+          Winters we go quiet, mend nets of old work, plan the next year's forms. Every piece passes
+          through both our hands at least once, which is also the reason we'll never scale.
+        </p>
+        <p class="byline">&mdash; Margaret &amp; June Halloran, founders</p>
+      </div>
+    </section>
+
+    <section class="cta" id="letter">
+      <div>
+        <p class="cta-eyebrow">The Letter</p>
+        <h2>A short note when the kiln cools.</h2>
+        <p>
+          Three or four times a year, when a firing comes out of the kiln, we send a letter:
+          what was made, what survived, and where to find it. No urgency, no scarcity tricks &mdash;
+          just first dibs for people who care to read.
+        </p>
+      </div>
+      <form class="signup" onsubmit="return submitSignup(event)">
+        <label for="email">Subscribe to the letter</label>
+        <div class="row">
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <p class="signup-note">One letter per firing. Unsubscribe in a single click.</p>
+        <p class="signup-success" id="success">Thank you &mdash; we'll write when the next firing cools.</p>
+      </form>
+    </section>
+
+    <section class="contact" id="visit">
+      <div class="col">
+        <h4>Studio &amp; Kiln</h4>
+        <p>14 Granite Ledge Road</p>
+        <p>Stonington, ME 04681</p>
+        <p style="margin-top:10px; color:var(--ink-soft);">By appointment between firings.</p>
+      </div>
+      <div class="col">
+        <h4>Direct</h4>
+        <a href="mailto:hello@kilnandtide.studio">hello@kilnandtide.studio</a>
+        <a href="tel:+12075550174">(207) 555-0174</a>
+        <p style="margin-top:10px; color:var(--ink-soft);">We answer mail before we answer the phone.</p>
+      </div>
+      <div class="col">
+        <h4>Wholesale</h4>
+        <p>Stocked at:</p>
+        <p style="color:var(--ink-soft);">North Atlantic Books &middot; Brooklyn</p>
+        <p style="color:var(--ink-soft);">The Crooked Well &middot; Portland</p>
+        <p style="color:var(--ink-soft);">Tea &amp; Tide &middot; Camden</p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="colophon">
+        Kiln &amp; Tide &middot; est. 2019. A small-batch ceramics studio on Deer Isle, Maine.
+        Set in Iowan Old Style. Photography by friends. No cookies, no tracking, no newsletter
+        platform &mdash; just a mailing list and the kiln schedule.
+      </div>
+      <div>&copy; 2026 Halloran Sisters Ceramics, LLC</div>
+    </footer>
+
+  </div>
+
+  <script>
+    function submitSignup(e) {
+      e.preventDefault();
+      var input = document.getElementById('email');
+      var success = document.getElementById('success');
+      if (input.value && /@/.test(input.value)) {
+        success.classList.add('shown');
+        input.value = '';
+        input.blur();
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

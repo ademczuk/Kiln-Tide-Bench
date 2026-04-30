@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Kimiclaw — FAILED (no deliverable)</title>
+<style>body{font-family:system-ui,sans-serif;background:#1f2832;color:#f3ece0;display:grid;place-items:center;min-height:100vh;margin:0;padding:32px}main{max-width:60ch;line-height:1.6}h1{color:#b3522e;font-size:32px;margin:0 0 12px;font-weight:500}.tag{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#6e8a8d;margin-bottom:24px}code{background:rgba(243,236,224,0.08);padding:2px 8px;border-radius:3px;font-size:14px;color:#f7eedd}p{margin:14px 0}.k{color:#cbb89a}</style>
+</head><body><main>
+<p class="tag">Kimiclaw solo · classic mode · 2 agents · 6 steps</p>
+<h1>FAILED — no deliverable produced</h1>
+<p>The Kimi swarm dispatch ran for <strong>513 seconds</strong> (8.5 min) and returned <code>status=completed</code> but the deliverable field was empty. The swarm spent its 6-step budget on planning/decomposition rather than producing the requested single-file HTML.</p>
+<p>This matches the documented KCS limitation: <span class="k">"KCS over-decomposes small tasks — driver uses classic mode... when the swarm still produces zero output the driver records &lt;silent: kcs_zero_output&gt;"</span> (from the /solve-room skill spec).</p>
+<p>Raw response from <code>/api/v2/swarm/swarm_ff6aee838bde</code>:</p>
+<pre><code>swarm_id=swarm_ff6aee838bde
+status=completed
+deliverable: (empty)
+duration_sec: 513</code></pre>
+<p style="margin-top:32px;color:#6e8a8d;font-size:14px">This is honest evidence in the benchmark: KCS in classic-mode-2-agents-6-steps cannot handle a "build me a single-file HTML page" prompt solo. It needs either heavier step budget, persona+verify mode, or a different problem shape (more decomposable than a single artifact).</p>
+</main></body></html>

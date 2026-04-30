@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiln &amp; Tide | Small-Batch Ceramics from Coastal Maine</title>
+  <meta name="description" content="Kiln & Tide is a small-batch ceramics studio run by two sisters in coastal Maine, crafting wheel-thrown mugs, serving bowls, lamp vessels, and tide-glazed planters." />
+  <style>
+    :root {
+      --sand: #efe5d3;
+      --oat: #e4d4bd;
+      --ink: #24343f;
+      --slate: #506675;
+      --sea: #7da4a6;
+      --foam: #f8f4ed;
+      --clay: #b86e4b;
+      --driftwood: #8a7460;
+      --line: rgba(36, 52, 63, 0.14);
+      --shadow: 0 20px 50px rgba(36, 52, 63, 0.12);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(125,164,166,0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(184,110,75,0.14), transparent 24%),
+        var(--foam);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      color: var(--slate);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sea), var(--clay));
+      display: inline-block;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 244, 237, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(36,52,63,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), transparent 28%),
+        linear-gradient(145deg, var(--sea), var(--clay));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 18px rgba(80,102,117,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 15px 7px 7px 7px;
+      border-top: 2px solid rgba(255,255,255,0.75);
+      border-radius: 50%;
+      transform: rotate(-8deg);
+    }
+
+    .brand b {
+      display: block;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--slate);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.95rem;
+      color: var(--slate);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--sea);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .hero {
+      padding: 56px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .card,
+    .story-panel,
+    .cta-panel {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 44px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.92)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='rgba(80,102,117,0.08)' stroke-width='1.1'%3E%3Cpath d='M17 156c26-26 57-37 93-33 29 3 52 13 83 39'/%3E%3Cpath d='M13 174c24-18 47-27 74-28 37-2 72 10 116 41'/%3E%3Cpath d='M48 63c20 10 31 26 34 49 3 18 12 32 28 42'/%3E%3C/g%3E%3C/svg%3E");
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: 0.96;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p.lead {
+      margin: 0 0 28px;
+      max-width: 42rem;
+      font-size: 1.08rem;
+      color: var(--slate);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 0.96rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(36,52,63,0.12);
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.88);
+      color: var(--ink);
+      border: 1px solid rgba(36,52,63,0.08);
+    }
+
+    .hero-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.92rem;
+      color: var(--slate);
+    }
+
+    .hero-notes div {
+      padding-left: 16px;
+      border-left: 2px solid rgba(125,164,166,0.42);
+    }
+
+    .hero-card {
+      padding: 22px;
+      background: linear-gradient(180deg, #f2e8d8, #efe3cf);
+      border: 1px solid rgba(138,116,96,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .vessel-scene {
+      min-height: 420px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(125,164,166,0.20), transparent 42%),
+        linear-gradient(180deg, #f6efe4 0%, #ebdcc7 100%);
+    }
+
+    .vessel-scene::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 34%;
+      background:
+        radial-gradient(circle at 30% 10%, rgba(255,255,255,0.22), transparent 32%),
+        linear-gradient(180deg, rgba(138,116,96,0), rgba(138,116,96,0.18)),
+        linear-gradient(90deg, #d9c4a9, #c9ab8c);
+    }
+
+    .sun {
+      position: absolute;
+      top: 44px;
+      right: 48px;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff6de, #d8b67f 72%);
+      opacity: 0.95;
+      box-shadow: 0 0 40px rgba(216,182,127,0.35);
+    }
+
+    .vase,
+    .vase::before,
+    .vase::after {
+      position: absolute;
+      content: "";
+      display: block;
+    }
+
+    .vase {
+      left: 13%;
+      bottom: 13%;
+      width: 31%;
+      height: 47%;
+      border-radius: 42% 42% 30% 30% / 28% 28% 18% 18%;
+      background:
+        radial-gradient(circle at 34% 22%, rgba(255,255,255,0.42), transparent 20%),
+        linear-gradient(180deg, #98b4b3 0%, #6f9496 36%, #40606b 100%);
+      box-shadow:
+        inset 0 -18px 28px rgba(0,0,0,0.12),
+        0 18px 30px rgba(80,102,117,0.18);
+    }
+
+    .vase::before {
+      left: 29%;
+      top: -16%;
+      width: 42%;
+      height: 20%;
+      border-radius: 14px 14px 36px 36px;
+      background: linear-gradient(180deg, #88a7aa, #597b86);
+    }
+
+    .vase::after {
+      inset: 15% 18% auto;
+      height: 8%;
+      border-top: 2px solid rgba(255,255,255,0.4);
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .bowl {
+      position: absolute;
+      right: 14%;
+      bottom: 13%;
+      width: 37%;
+      height: 22%;
+      border-radius: 50% 50% 42% 42% / 68% 68% 34% 34%;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.55), transparent 22%),
+        linear-gradient(180deg, #cd7f58, #a45f40 72%, #7e4733);
+      box-shadow:
+        inset 0 -12px 18px rgba(0,0,0,0.1),
+        0 18px 28px rgba(115,70,52,0.18);
+    }
+
+    .bowl::before {
+      content: "";
+      position: absolute;
+      inset: 12% 7% 28%;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.32);
+    }
+
+    .hero-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--slate);
+      font-size: 0.92rem;
+      padding: 0 4px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      margin: 10px 0 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 38rem;
+      color: var(--slate);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(36,52,63,0.07);
+      overflow: hidden;
+    }
+
+    .thumb {
+      aspect-ratio: 1 / 1.02;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f1ebdf, #e5d3bc);
+    }
+
+    .thumb.one::before,
+    .thumb.two::before,
+    .thumb.three::before,
+    .thumb.four::before,
+    .thumb.one::after,
+    .thumb.two::after,
+    .thumb.three::after,
+    .thumb.four::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+    }
+
+    .thumb.one::before {
+      width: 38%;
+      height: 56%;
+      left: 31%;
+      bottom: 18%;
+      border-radius: 42% 42% 28% 28% / 22% 22% 18% 18%;
+      background: linear-gradient(180deg, #b77b59, #8a543b);
+      box-shadow: inset 0 -10px 18px rgba(0,0,0,0.12);
+    }
+
+    .thumb.one::after {
+      width: 15%;
+      height: 24%;
+      right: 22%;
+      top: 39%;
+      border: 7px solid #9b6144;
+      border-left: 0;
+      border-radius: 0 40px 40px 0;
+    }
+
+    .thumb.two::before {
+      width: 64%;
+      height: 26%;
+      left: 18%;
+      bottom: 25%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #90aeb0, #5f8186);
+      box-shadow: inset 0 -10px 12px rgba(0,0,0,0.1);
+    }
+
+    .thumb.two::after {
+      width: 48%;
+      height: 14%;
+      left: 26%;
+      bottom: 35%;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.34);
+    }
+
+    .thumb.three::before {
+      width: 30%;
+      height: 62%;
+      left: 35%;
+      bottom: 16%;
+      border-radius: 45% 45% 24% 24% / 18% 18% 16% 16%;
+      background: linear-gradient(180deg, #d1a56f, #ad764d 65%, #885537);
+      box-shadow: inset 0 -10px 16px rgba(0,0,0,0.12);
+    }
+
+    .thumb.three::after {
+      width: 20%;
+      height: 12%;
+      left: 40%;
+      top: 24%;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .thumb.four::before {
+      width: 42%;
+      height: 44%;
+      left: 29%;
+      bottom: 18%;
+      border-radius: 18px 18px 26px 26px;
+      background: linear-gradient(180deg, #94b1ae, #6d8f91 60%, #49636d);
+      box-shadow: inset 0 -10px 14px rgba(0,0,0,0.12);
+    }
+
+    .thumb.four::after {
+      width: 50%;
+      height: 10%;
+      left: 25%;
+      bottom: 49%;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.28);
+    }
+
+    .card-body {
+      padding: 18px 18px 20px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .price-row h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .price {
+      color: var(--clay);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--slate);
+      font-size: 0.95rem;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .story-panel {
+      overflow: hidden;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(36,52,63,0.07);
+    }
+
+    .studio-image {
+      min-height: 100%;
+      background:
+        linear-gradient(140deg, rgba(255,255,255,0.12), transparent 40%),
+        linear-gradient(180deg, #89a8a7 0%, #6d8d92 28%, #d6bea0 28%, #d7b596 100%);
+      position: relative;
+    }
+
+    .studio-image::before,
+    .studio-image::after {
+      content: "";
+      position: absolute;
+      display: block;
+    }
+
+    .studio-image::before {
+      inset: auto 10% 16% 12%;
+      height: 18%;
+      border-radius: 999px;
+      background: rgba(90, 62, 45, 0.18);
+      filter: blur(16px);
+    }
+
+    .studio-image::after {
+      left: 18%;
+      right: 18%;
+      bottom: 18%;
+      top: 16%;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 22% 28%, rgba(255,255,255,0.18), transparent 10%),
+        linear-gradient(180deg, rgba(255,255,255,0.12), transparent 30%);
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,0.22),
+        inset 0 -120px 0 rgba(104,70,49,0.10);
+    }
+
+    .wheel {
+      position: absolute;
+      left: 50%;
+      bottom: 18%;
+      transform: translateX(-50%);
+      width: 44%;
+      height: 13%;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #b46b49, #874d36);
+      box-shadow: 0 18px 28px rgba(78,55,43,0.18);
+    }
+
+    .hands {
+      position: absolute;
+      left: 50%;
+      bottom: 29%;
+      transform: translateX(-50%);
+      width: 18%;
+      height: 32%;
+      border-radius: 42% 42% 18% 18%;
+      background: linear-gradient(180deg, #c99270, #a76f50);
+      box-shadow: inset 0 -12px 16px rgba(0,0,0,0.12);
+    }
+
+    .story-copy {
+      padding: 34px;
+    }
+
+    .story-copy h2 {
+      margin: 12px 0 18px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .story-copy p {
+      margin: 0 0 16px;
+      color: var(--slate);
+      font-size: 1rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .story-note {
+      padding: 16px;
+      border-radius: 18px;
+      background: #f5efe6;
+      border: 1px solid rgba(36,52,63,0.06);
+    }
+
+    .story-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .cta-panel {
+      background:
+        linear-gradient(135deg, rgba(36,52,63,0.96), rgba(53,74,85,0.96)),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      color: #f8f5ef;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-panel::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      right: -110px;
+      bottom: -150px;
+      background: radial-gradient(circle, rgba(125,164,166,0.38), transparent 64%);
+      pointer-events: none;
+    }
+
+    .cta-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .cta-panel h2 {
+      margin: 12px 0 14px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-panel p {
+      margin: 0 0 18px;
+      color: rgba(248,245,239,0.82);
+      max-width: 42rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      font-size: 0.98rem;
+      color: rgba(248,245,239,0.92);
+    }
+
+    .contact-list div {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer {
+      padding: 24px 0 44px;
+      color: var(--slate);
+      font-size: 0.9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(36,52,63,0.08);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 1080px) {
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid,
+      .story,
+      .cta-wrap { grid-template-columns: 1fr; }
+      .vessel-scene { min-height: 360px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .hero-copy,
+      .hero-card,
+      .story-copy,
+      .cta-panel { padding: 24px; }
+      .products { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .story-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Kiln and Tide home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <b>Kiln &amp; Tide</b>
+          <span>Small-batch ceramics, coastal Maine</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Wheel-thrown in small coastal batches</span>
+          <h1>Salt air, warm clay, and pieces meant to be used every day.</h1>
+          <p class="lead">
+            Kiln &amp; Tide is a ceramics studio run by two sisters on the coast of Maine, making functional stoneware in short seasonal runs. Every mug, bowl, and vessel is thrown, glazed, and packed by hand a few miles from the harbor.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#shop">Browse the collection</a>
+            <a class="btn btn-secondary" href="#story">Meet the sisters</a>
+          </div>
+          <div class="hero-notes">
+            <div>New summer kiln opening every Thursday at 7 PM ET.</div>
+            <div>Food-safe glazes, dishwasher safe, made for daily use.</div>
+            <div>Ships from Maine in recycled kraft packaging.</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="vessel-scene" aria-hidden="true">
+            <div class="sun"></div>
+            <div class="vase"></div>
+            <div class="bowl"></div>
+          </div>
+          <div class="hero-caption">
+            <span>Sea-glass glaze study, May firing</span>
+            <span>Batch 18</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Current collection</span>
+            <h2>From the latest firing</h2>
+          </div>
+          <p>
+            We keep the line intentionally small so every run still feels personal. Quantities are limited, glazes shift slightly from batch to batch, and that is very much the point.
+          </p>
+        </div>
+
+        <div class="products">
+          <article class="card">
+            <div class="thumb one" aria-hidden="true"></div>
+            <div class="card-body">
+              <div class="price-row">
+                <h3>Harbor Mug</h3>
+                <span class="price">$42</span>
+              </div>
+              <p>A sturdy, wheel-thrown morning mug with a thumb rest and a warm iron-clay base showing through at the foot.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb two" aria-hidden="true"></div>
+            <div class="card-body">
+              <div class="price-row">
+                <h3>Low Tide Serving Bowl</h3>
+                <span class="price">$68</span>
+              </div>
+              <p>Wide, shallow stoneware bowl finished in a soft blue-green glaze that pools darker along the rim.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb three" aria-hidden="true"></div>
+            <div class="card-body">
+              <div class="price-row">
+                <h3>Beacon Vase</h3>
+                <span class="price">$56</span>
+              </div>
+              <p>Tall vessel for wildflowers, beach grass, or a kitchen branch clipping. Satin glaze, quietly luminous in late light.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb four" aria-hidden="true"></div>
+            <div class="card-body">
+              <div class="price-row">
+                <h3>Sea Mist Planter</h3>
+                <span class="price">$48</span>
+              </div>
+              <p>Compact planter with drainage tray, made for herbs on a windowsill and the one succulent you somehow keep alive.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="shell story">
+        <div class="story-panel studio-image" aria-hidden="true">
+          <div class="hands"></div>
+          <div class="wheel"></div>
+        </div>
+
+        <div class="story-panel story-copy">
+          <span class="eyebrow">The studio</span>
+          <h2>Two sisters, one old kiln, and a lot of weather.</h2>
+          <p>
+            Kiln &amp; Tide began when Mara came home to Maine after a decade in restaurant kitchens and June finally admitted that the “temporary” wheel in the shed had become a second full-time job. They converted their grandfather’s bait room into a bright little studio, patched the floorboards, and started firing small weekend batches between lobster boats and rain squalls.
+          </p>
+          <p>
+            Their work is rooted in utility, not perfection. Handles are meant to feel good in a cold hand. Bowls should stack well, pour well, and survive ordinary mornings. The glazes borrow from the coast around them: eelgrass green, fog blue, mussel-shell gray, weathered brick.
+          </p>
+          <p>
+            Nothing here is factory smooth, and that is the charm. Each piece carries a little evidence of the hand that made it.
+          </p>
+
+          <div class="story-grid">
+            <div class="story-note">
+              <strong>Where we make it</strong>
+              Cushing, Maine, in a one-room studio a few minutes from the water.
+            </div>
+            <div class="story-note">
+              <strong>How we fire</strong>
+              Small electric kiln runs, twice monthly, with seasonal glaze tests in between.
+            </div>
+            <div class="story-note">
+              <strong>What we value</strong>
+              Useful forms, honest materials, and the kind of objects that get better with regular use.
+            </div>
+            <div class="story-note">
+              <strong>What changes</strong>
+              Shapes stay familiar, but no two glaze runs ever land exactly the same.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell cta-panel">
+        <div class="cta-wrap">
+          <div>
+            <span class="eyebrow">Say hello</span>
+            <h2>Need a gift, a studio pickup, or a custom run for your table?</h2>
+            <p>
+              We take a small number of custom orders each season for restaurants, wedding gifting, and simple house sets. If you have something in mind, send a note. We read every message ourselves, usually with clay still on our hands.
+            </p>
+            <a class="btn btn-secondary" href="mailto:hello@kilnandtide.com">hello@kilnandtide.com</a>
+          </div>
+
+          <div class="contact-list">
+            <div><strong>Studio hours</strong><br />By appointment, Wednesdays through Saturdays</div>
+            <div><strong>Instagram</strong><br />@kilnandtide</div>
+            <div><strong>Pickup + shipping</strong><br />Studio pickup in Cushing or U.S. shipping from coastal Maine</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <div>Kiln &amp; Tide, coastal Maine ceramics by sisters Mara &amp; June.</div>
+      <div>&copy; <span id="year"></span> Kiln &amp; Tide</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
