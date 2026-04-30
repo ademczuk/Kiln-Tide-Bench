@@ -521,6 +521,55 @@
       line-height: 1.6;
     }
 
+    /* Click-through overlay so the thumbnail itself opens the full page
+       in a new tab. Iframe has pointer-events: none so the link below
+       captures clicks even when an iframe is rendered above. */
+    .preview-link {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: inherit;
+      transition: box-shadow 120ms ease, background 120ms ease;
+    }
+
+    .preview-link::after {
+      content: "Open full page \2197";
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: #f3ece0;
+      background: rgba(8, 17, 25, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 140ms ease, transform 140ms ease;
+      pointer-events: none;
+    }
+
+    .preview-link:hover {
+      box-shadow: inset 0 0 0 2px rgba(255, 175, 90, 0.45);
+      background: rgba(255, 175, 90, 0.04);
+    }
+
+    .preview-link:hover::after,
+    .preview-link:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .preview-link:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: -3px;
+    }
+
     .stats {
       display: grid;
       gap: 12px;
@@ -950,9 +999,13 @@
     }
 
     function previewHtml(attempt) {
+      const linkLabel = `Open ${attempt.title} in a new tab`;
+      const overlay = `<a class="preview-link" href="${attempt.sourceUrl}" target="_blank" rel="noopener noreferrer" aria-label="${linkLabel}"></a>`;
+
       if (attempt.previewKind === "remote") {
         return `
           <iframe class="preview-frame" src="${attempt.sourceUrl}" loading="lazy" referrerpolicy="no-referrer" title="${attempt.title} rendered preview"></iframe>
+          ${overlay}
         `;
       }
 
@@ -965,6 +1018,7 @@
               <p>Expected path: <span class="mono">${attempt.sourceUrl}</span></p>
             </div>
           </div>
+          ${overlay}
         `;
       }
 
@@ -976,6 +1030,7 @@
             <p>Expected path: <span class="mono">${attempt.sourceUrl}</span></p>
           </div>
         </div>
+        ${overlay}
       `;
     }
 
