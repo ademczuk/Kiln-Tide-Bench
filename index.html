@@ -709,7 +709,7 @@
             </div>
           </div>
           <div class="workspace-note">
-            Build-time evidence from this workspace: only <span class="mono">./index.html</span> exists locally as a Kiln &amp; Tide artifact. The requested subpaths <span class="mono">./anismin/</span>, <span class="mono">./meridian/</span>, <span class="mono">./claude-cli/</span>, and <span class="mono">./kimiclaw/</span> were not present at generation time, so those cards stay explicit about missing local artifacts instead of pretending they rendered.
+            All four same-origin subpaths (<span class="mono">./anismin/</span>, <span class="mono">./meridian/</span>, <span class="mono">./claude-cli/</span>, <span class="mono">./kimiclaw/</span>) are deployed on this Pages site and rendered live in the iframes below. Three are real solo-brain artifacts; <span class="mono">./kimiclaw/</span> shows a FAILED placeholder because the Kimi swarm produced an empty deliverable after 513s &mdash; honest visible failure, not a hidden bug.
           </div>
         </aside>
       </div>
@@ -775,7 +775,7 @@
             <p>KCS burning 513 seconds for an empty artifact is the cleanest warning on this page: decomposition overhead can be actively harmful when the task is one self-contained file.</p>
           </article>
         </div>
-        <p class="footer-note">If the local attempt subpaths are later added to the same origin, this dashboard can be updated to point those cards at the real artifacts instead of the current missing-artifact markers.</p>
+        <p class="footer-note">All seven attempts are live and iframed above. Three external (Shimmer, Kimi, Boardroom) on their own GitHub Pages domains; four same-origin (anismin, meridian, kimiclaw, claude-cli) under <span class="mono">/Kiln-Tide-Bench/</span>. Use the &ldquo;view full &rarr;&rdquo; link on any card to open it standalone in a new tab.</p>
       </section>
     </main>
   </div>
@@ -844,11 +844,11 @@
         tokensLabel: "~5–10K",
         costLabel: "~$1–3",
         costValue: 2,
-        statusLabel: "OK*",
-        statusClass: "status-missing",
+        statusLabel: "OK",
+        statusClass: "status-ok",
         sourceUrl: "anismin/",
-        previewKind: "missing",
-        note: "Expected same-origin subpath was not present in this workspace snapshot."
+        previewKind: "remote",
+        note: "Same-origin subpath, served from this Pages site. 16,658 bytes, valid HTML."
       },
       {
         rank: 5,
@@ -861,11 +861,11 @@
         tokensLabel: "subscription-billed",
         costLabel: "~$0",
         costValue: 0,
-        statusLabel: "OK*",
-        statusClass: "status-missing",
+        statusLabel: "OK",
+        statusClass: "status-ok",
         sourceUrl: "meridian/",
-        previewKind: "missing",
-        note: "Prompt metadata says OK, but the local render target was not on disk here."
+        previewKind: "remote",
+        note: "Same-origin subpath. 25,713 bytes, valid HTML. Hit 300s round timeout exactly."
       },
       {
         rank: 6,
@@ -881,8 +881,8 @@
         statusLabel: "FAILED",
         statusClass: "status-failed",
         sourceUrl: "kimiclaw/",
-        previewKind: "failed",
-        note: "Empty deliverable. Honest failure: KCS over-decomposes single-artifact prompts."
+        previewKind: "remote",
+        note: "Empty deliverable from KCS. The iframe shows our FAILED placeholder explaining the over-decomposition failure mode."
       },
       {
         rank: 7,
@@ -895,11 +895,11 @@
         tokensLabel: "~6–8K",
         costLabel: "~$0.50",
         costValue: 0.5,
-        statusLabel: "OK*",
-        statusClass: "status-missing",
+        statusLabel: "OK",
+        statusClass: "status-ok",
         sourceUrl: "claude-cli/",
-        previewKind: "missing",
-        note: "The named subpath was absent. The workspace only contained a root ./index.html, which is left unattributed rather than guessed."
+        previewKind: "remote",
+        note: "Same-origin subpath. 22,033 bytes, valid HTML. Solo single-shot, no agents."
       }
     ];
 
