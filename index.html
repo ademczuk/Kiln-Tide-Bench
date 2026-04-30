@@ -570,6 +570,112 @@
       outline-offset: -3px;
     }
 
+    /* "About this benchmark + how to add more" panel — sits between
+       the hero and the summary table so newcomers see the prompt
+       and the contribution flow before the data. */
+    .benchmark-spec {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 0;
+      margin: 0 0 32px 0;
+    }
+
+    .spec-card {
+      padding: 26px 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .spec-card h2 {
+      font-size: 1.35rem;
+      margin: 6px 0 0 0;
+      letter-spacing: -0.01em;
+    }
+
+    .spec-card .section-copy {
+      margin: 0;
+    }
+
+    .prompt-block {
+      margin: 0;
+      padding: 16px 18px;
+      background: rgba(2, 8, 14, 0.65);
+      border: 1px solid rgba(120, 170, 192, 0.12);
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #e6dfd0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .prompt-source {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .add-steps {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--text);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .add-steps li {
+      padding-left: 4px;
+    }
+
+    .add-steps a {
+      color: var(--amber);
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 211, 108, 0.45);
+    }
+
+    .add-steps code,
+    .add-steps .mono {
+      font-family: var(--mono);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.86em;
+    }
+
+    .naming-block {
+      margin: 8px 0 4px 0;
+      padding: 10px 14px;
+      background: rgba(2, 8, 14, 0.55);
+      border: 1px solid rgba(120, 170, 192, 0.12);
+      border-radius: var(--radius-sm);
+      font-family: var(--mono);
+      font-size: 0.86rem;
+      color: #f3ece0;
+    }
+
+    .examples-line {
+      margin: 6px 0 0 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 880px) {
+      .benchmark-spec {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .stats {
       display: grid;
       gap: 12px;
@@ -765,6 +871,40 @@
     </header>
 
     <main>
+      <section class="benchmark-spec" id="prompt-and-add">
+        <article class="spec-card">
+          <div>
+            <span class="section-tag">The Prompt</span>
+            <h2>One brief, every contender</h2>
+          </div>
+          <p class="section-copy">Every agent on this page received exactly the same input — no system prompt, no follow-ups, no clarifications. One shot, ship the file.</p>
+          <pre class="prompt-block"><code>Build a single-file static page (one .html, inline CSS/JS, no deps,
+no build step) for "Kiln &amp; Tide" &mdash; a small-batch ceramics
+studio run by two sisters in coastal Maine. Include: hero, 4 products
+with prices, studio story, contact CTA. Make it feel like the
+studio's real site, not a template. One shot, ship the file.</code></pre>
+          <p class="prompt-source">Verbatim from <span class="mono">BENCHMARK-PROMPT.md</span>.</p>
+        </article>
+
+        <article class="spec-card">
+          <div>
+            <span class="section-tag">Add a Contender</span>
+            <h2>Run another LLM against the brief</h2>
+          </div>
+          <p class="section-copy">Each new attempt becomes its own GitHub Pages site so the dashboard can iframe it directly.</p>
+          <ol class="add-steps">
+            <li>Send the prompt above to the LLM you want to test. Save the output as a single self-contained <code>index.html</code>.</li>
+            <li>
+              Create a new public repo under <a href="https://github.com/Angel-Software-Solutions-LLC" target="_blank" rel="noopener">github.com/Angel-Software-Solutions-LLC</a> using this naming convention:
+              <div class="naming-block">&lt;agent&gt;-&lt;model&gt;-&lt;site&gt;</div>
+              <p class="examples-line">Examples: <span class="mono">Claude-opus-4-7-KilnNTide</span>, <span class="mono">Gemini-3-1-pro-KilnNTide</span>, <span class="mono">GPT-5-4-KilnNTide</span>.</p>
+            </li>
+            <li>Commit the file as the repo's <code>index.html</code>, then enable GitHub Pages (Settings &rarr; Pages &rarr; main / root). Wait ~60s for the first build.</li>
+            <li>Open a PR against <a href="https://github.com/ademczuk/Kiln-Tide-Bench" target="_blank" rel="noopener">ademczuk/Kiln-Tide-Bench</a> adding an entry to the <code>attempts</code> array in <code>index.html</code> with the new Pages URL as <code>sourceUrl</code> and <code>previewKind: "remote"</code>.</li>
+          </ol>
+        </article>
+      </section>
+
       <section class="section">
         <div class="section-head">
           <div>
