@@ -1174,6 +1174,23 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
         sourceUrl: "https://angel-software-solutions-llc.github.io/SolveRoom-multibrain-KilnNTide/",
         previewKind: "remote",
         note: "Re-run with longer per-brain timeouts (90/120/480/480s, round 600s) after the rank-3 boardroom set the bar. Round 1 stalled with only Meridian replying (others timed out on a 1575-byte craft prompt under tighter budgets). Round 2 recovered cleanly: Anismin, Codex, and Meridian all independently re-evaluated and attested Meridian's round-1 file as the consensus candidate. Verify round confirmed via re-hash on all three replies — no attestation drift, 0 FAILED. KCS skipped after silent_count hit threshold. Meeting 7c9cb8b1, 6,226 bytes, inline CSS, four products (Salt-Fire Teapot $128 / Tide Pool Bowl $52 / Driftwood Vase $74 / Harbor Mug $44), Mae & Eliza Warren of Portland, mailto:hello@kilnandtide.com. Image-upgrade pass not run this time — Grok Imagine team credits exhausted (429), Gemini API key expired. Shipping the consensus HTML as-is, which has no image refs by design."
+      },
+      {
+        rank: 12,
+        title: "Boardroom v2 (multibrain authored + merged)",
+        sourceAgent: "/solve-room v2 — PR1-4 active, blind-write + auto-extract + synthesis, 2026-05-01",
+        timeLabel: "~15 min",
+        timeMinutes: 15,
+        agentsLabel: "4 configured / 2 authored / 1 merged",
+        agentCount: 4,
+        tokensLabel: "~50K",
+        costLabel: "~$0",
+        costValue: 0,
+        statusLabel: "OK",
+        statusClass: "status-ok",
+        sourceUrl: "https://angel-software-solutions-llc.github.io/SolveRoom-multibrain-KilnNTide-v2/",
+        previewKind: "remote",
+        note: "Same prompt + budgets as rank 11, but with /solve-room v2 patched in. PR1 blind-write contract added a single round-2 prompt clause: 'Submit your OWN complete artifact between markers. Validations of others' work do not count toward DONE.' Result: Codex AND Meridian each blind-wrote their own HTML candidate (7,410 + 5,825 bytes), instead of attesting to Meridian's round-1 file like in rank 11. PR2 auto-extracted both. PR3 dispatched Meridian as merger (HTML → meridian per affinity heuristic) — she returned a 7,255-byte composite that ships here as index.html. Both source candidates also published in the repo for inspection. Anismin still timed out at 90s (PR5 adaptive-timeouts deferred), KCS still structurally silent. Verify split 1 VERIFIED / 1 FAILED — Codex marked his own claim FAILED in honest self-review even though his bytes parsed valid HTML. The DONE_BUT_UNVERIFIED tag preserves that signal. First end-to-end run with no operator manual lift: round close → spec envelope → candidate extract → synthesis → final all happened automatically."
       }
     ];
 
