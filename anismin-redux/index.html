@@ -1,0 +1,67 @@
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<title>Kiln & Tide – Coastal Ceramics</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;background:#f9f9f9;color:#333}
+header{background:#1a1a2e;color:#fff;text-align:center;padding:120px 20px}
+header h1{margin:0;font-size:3em}
+section{max-width:1200px;margin:auto;padding:20px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.product{background:#fff;border:1px solid #ddd;padding:15px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+.product h3{margin-top:0}
+.product p{margin:5px 0}
+.product .price{font-weight:bold;color:#b12704}
+footer{background:#1a1a2e;color:#fff;text-align:center;padding:20px}
+button{background:#e67e22;border:none;color:#fff;padding:10px 20px;border-radius:4px;cursor:pointer}
+button:hover{background:#d35400}
+</style>
+</head>
+<body>
+<header>
+<h1>Kiln & Tide</h1>
+<p>Hand‑crafted ceramics for coastal living</p>
+</header>
+<section>
+<h2>Our Stories</h2>
+<p>Two sisters in coastal Maine turned a family workshop into a sustainable ceramics studio. The salty air and rocky shores inspire every bowl, mug, and plate we shape by hand.</p>
+<div class='products'>
+<div class='product'>
+<h3>Ocean‑Blue Mug</h3>
+<p>Glazed ceramic cup with wave motif.</p>
+<p class='price'>$45.99</p>
+</div>
+<div class='product'>
+<h3>Seaside Plate</h3>
+<p>Hand‑painted plate, 10" diameter.</p>
+<p class='price'>$68.50</p>
+</div>
+<div class='product'>
+<h3>Ridge Vase</h3>
+<p>Tall vase with muted ochre glaze.</p>
+<p class='price'>$129.00</p>
+</div>
+<div class='product'>
+<h3>Coastal Tumbler</h3>
+<p>Insulated tumbler, 16oz.</p>
+<p class='price'>$52.25</p>
+</div>
+</div>
+<h2>Contact Us</h2>
+<p>Visit us at <strong>12 W. Seawall, Boothbay Harbor, ME 04507</strong> or email <a href='mailto:info@kilntide.com'>info@kilntide.com</a> to book a visit or place an order.</p>
+<button onclick="document.getElementById('contact').scrollIntoView();">Request a Quote</button>
+<div id='contact' style='padding-top:50px;'>
+<h2>Request a Quote</h2>
+<form action='https://formspree.io/f/maybvhbz' method='POST'>
+<label>Name:<br><input type='text' name='name' required></label><br>
+<label>Email:<br><input type='email' name='_replyto' required></label><br>
+<label>Message:<br><textarea name='message' required></textarea></label><br>
+<button type='submit'>Send</button>
+</form>
+</div>
+</section>
+<footer>
+<p>© 2026 Kiln & Tide. All rights reserved.</p>
+</footer>
+</body>
+</html>

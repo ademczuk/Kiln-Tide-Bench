@@ -397,6 +397,19 @@
       background: var(--rose);
     }
 
+    .status-shame {
+      color: #ffd4dc;
+      background: rgba(255, 127, 150, 0.12);
+      border-color: rgba(255, 127, 150, 0.4);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .status-shame::before {
+      background: var(--rose);
+      box-shadow: 0 0 0 4px rgba(255, 127, 150, 0.18);
+    }
+
     .status-note {
       display: block;
       margin-top: 8px;
@@ -963,6 +976,10 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
             <h3>Swarm failure is signal, not noise</h3>
             <p>KCS burning 513 seconds for an empty artifact is the cleanest warning on this page: decomposition overhead can be actively harmful when the task is one self-contained file.</p>
           </article>
+          <article class="verdict-panel">
+            <h3>Hall of Shame: same brain, worse ship</h3>
+            <p>Anismin's redux pass is the inverse failure mode of KCS — not empty, just lazy. Same Opus 4.7 endpoint that previously shipped 16K of considered design returned a 2.5K Bootstrap-shaped wireframe with a third-party form endpoint baked in. Regressions are kept on the page on purpose: a benchmark that quietly hides bad runs is just a highlight reel.</p>
+          </article>
         </div>
         <p class="footer-note">All seven attempts are live and iframed above. Three external (Shimmer, Kimi, Boardroom) on their own GitHub Pages domains; four same-origin (anismin, meridian, kimiclaw, claude-cli) under <span class="mono">/Kiln-Tide-Bench/</span>. Use the &ldquo;view full &rarr;&rdquo; link on any card to open it standalone in a new tab.</p>
       </section>
@@ -1089,6 +1106,23 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
         sourceUrl: "claude-cli/",
         previewKind: "remote",
         note: "Same-origin subpath. 22,033 bytes, valid HTML. Solo single-shot, no agents."
+      },
+      {
+        rank: 8,
+        title: "Anismin redux (Hall of Shame)",
+        sourceAgent: "Opus 4.7 via :18889 — second pass, 2026-05-01",
+        timeLabel: "n/a",
+        timeMinutes: 99,
+        agentsLabel: "1",
+        agentCount: 1,
+        tokensLabel: "~2K",
+        costLabel: "~$0.20",
+        costValue: 0.2,
+        statusLabel: "HALL OF SHAME",
+        statusClass: "status-shame",
+        sourceUrl: "anismin-redux/",
+        previewKind: "remote",
+        note: "Same brain, second attempt — 2,495 bytes, 6.5× smaller than her own prior ship. Generic Arial, black void hero with no coastal palette, four identical grey cards, and a contact form that POSTs to a hardcoded formspree.io endpoint that is not Andrew's. Technically valid HTML, materially a tutorial template. Kept here as the regression line: same agent, worse output, no excuse."
       }
     ];
 
