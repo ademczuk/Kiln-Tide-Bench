@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiln &amp; Tide — small-batch stoneware from coastal Maine</title>
+<meta name="description" content="Kiln &amp; Tide is a sister-run ceramics studio in Boothbay Harbor, Maine. Wheel-thrown stoneware, salt-glaze experiments, and slow batches fired by tide.">
+<style>
+  :root{
+    --foam:#f3ede1;
+    --paper:#fbf7ee;
+    --ink:#1d2a31;
+    --salt:#7a8a8c;
+    --kelp:#3d5651;
+    --rust:#a8512a;
+    --rust-deep:#7a3818;
+    --shore:#c8b896;
+    --shadow:0 24px 60px rgba(29,42,49,.10);
+    --serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:17px/1.6 var(--sans);
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(122,138,140,.18), transparent 40%),
+      radial-gradient(ellipse at 90% 30%, rgba(168,81,42,.06), transparent 40%);
+  }
+  ::selection{background:var(--rust);color:var(--paper)}
+  a{color:var(--rust-deep)}
+  a:hover{color:var(--rust)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* nav */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+  nav .mark{font:700 18px var(--serif);letter-spacing:.02em;text-transform:none}
+  nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  nav a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+  nav a:hover{border-bottom-color:var(--rust)}
+
+  /* hero */
+  header.hero{position:relative;padding:64px 0 88px;overflow:hidden}
+  header.hero::before{
+    content:"";position:absolute;inset:auto -10% -8% -10%;height:62%;
+    background:linear-gradient(180deg,transparent,rgba(122,138,140,.14));
+    border-radius:50% 50% 0 0/100% 100% 0 0;z-index:0;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:52px;align-items:end;position:relative;z-index:1}
+  .kicker{font:600 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin:0 0 20px}
+  h1{font:500 clamp(3.2rem,8vw,6rem)/.94 var(--serif);letter-spacing:-.015em;margin:0 0 18px;color:var(--ink)}
+  h1 em{font-style:italic;color:var(--kelp)}
+  .lede{font:400 1.18rem/1.55 var(--serif);color:var(--kelp);max-width:36ch;margin:0 0 28px}
+  .meta{display:flex;flex-wrap:wrap;gap:22px;font:500 13px var(--sans);color:var(--salt);text-transform:uppercase;letter-spacing:.12em}
+  .meta span::before{content:"◦  ";color:var(--rust);font-weight:700}
+  .hero-aside{padding:28px;border:1px solid rgba(122,138,140,.32);border-radius:6px;background:rgba(251,247,238,.55);backdrop-filter:blur(2px)}
+  .hero-aside h3{font:500 1.4rem/1.2 var(--serif);margin:0 0 12px;color:var(--kelp)}
+  .hero-aside p{margin:0 0 12px;color:var(--ink)}
+  .hero-aside .when{font:600 13px var(--sans);text-transform:uppercase;letter-spacing:.14em;color:var(--rust);margin-top:18px}
+
+  /* tide-marker rule */
+  .rule{display:flex;align-items:center;gap:16px;margin:20px 0 64px;color:var(--salt);font:500 11px var(--sans);text-transform:uppercase;letter-spacing:.22em}
+  .rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(122,138,140,.5),transparent)}
+
+  /* products */
+  section{padding:24px 0 56px}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px}
+  .section-head h2{font:500 clamp(2rem,4vw,2.8rem)/1 var(--serif);margin:0;letter-spacing:-.01em}
+  .section-head p{margin:0;max-width:42ch;color:var(--salt);font-size:.96rem}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+  .product{display:flex;flex-direction:column}
+  .product .frame{
+    aspect-ratio:5/4;border-radius:4px;position:relative;overflow:hidden;
+    background:var(--shore);box-shadow:var(--shadow);
+  }
+  .product .frame svg{display:block;width:100%;height:100%}
+  .product h3{font:500 1.35rem/1.2 var(--serif);margin:18px 0 6px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .product h3 .price{font:600 1rem var(--sans);color:var(--rust);letter-spacing:.04em;white-space:nowrap}
+  .product .glaze{font:500 11px var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--salt);margin:0 0 10px}
+  .product p{margin:0;color:var(--ink);font-size:.97rem}
+  .product .care{margin-top:12px;font-size:.86rem;color:var(--salt);font-style:italic}
+
+  /* story */
+  .story{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;padding:64px 0}
+  .story-image{
+    aspect-ratio:4/5;background:linear-gradient(160deg,var(--kelp),var(--salt));
+    border-radius:4px;box-shadow:var(--shadow);position:relative;overflow:hidden
+  }
+  .story-image::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(243,237,225,.5), transparent 40%),
+      radial-gradient(circle at 70% 80%, rgba(168,81,42,.35), transparent 50%);
+    mix-blend-mode:screen;
+  }
+  .story h2{font:500 clamp(2rem,4vw,2.8rem)/1 var(--serif);margin:0 0 20px}
+  .story .sig{margin-top:24px;font:italic 500 1.05rem var(--serif);color:var(--kelp)}
+  .story blockquote{
+    margin:24px 0;padding:0 0 0 20px;border-left:2px solid var(--rust);
+    font:italic 500 1.18rem/1.55 var(--serif);color:var(--kelp);max-width:38ch
+  }
+
+  /* cta */
+  .cta{
+    margin:24px 0 64px;padding:56px 48px;border-radius:8px;
+    background:linear-gradient(135deg,var(--kelp) 0%,#2c4540 100%);
+    color:var(--paper);box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center
+  }
+  .cta h2{font:500 clamp(1.8rem,3vw,2.4rem)/1.05 var(--serif);margin:0 0 12px;color:var(--paper)}
+  .cta p{margin:0 0 8px;color:rgba(243,237,225,.85)}
+  .cta form{display:flex;flex-direction:column;gap:12px}
+  .cta label{font:600 11px var(--sans);text-transform:uppercase;letter-spacing:.16em;color:rgba(243,237,225,.7)}
+  .cta input,.cta textarea{
+    background:rgba(243,237,225,.08);border:1px solid rgba(243,237,225,.22);
+    color:var(--paper);padding:12px 14px;border-radius:3px;font:400 15px var(--sans);
+    width:100%;resize:vertical
+  }
+  .cta input:focus,.cta textarea:focus{outline:none;border-color:var(--rust);background:rgba(243,237,225,.12)}
+  .cta button{
+    background:var(--rust);color:var(--paper);border:0;padding:14px 22px;
+    font:700 13px var(--sans);text-transform:uppercase;letter-spacing:.18em;
+    border-radius:3px;cursor:pointer;transition:background .2s
+  }
+  .cta button:hover{background:var(--rust-deep)}
+  .cta .direct{margin-top:14px;font-size:.92rem}
+  .cta .direct a{color:var(--paper);border-bottom:1px solid rgba(243,237,225,.4)}
+
+  footer{
+    border-top:1px solid rgba(122,138,140,.24);padding:32px 0 56px;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;
+    color:var(--salt);font-size:.88rem
+  }
+  footer .where{font:500 13px var(--sans)}
+  footer .where strong{color:var(--ink);font-weight:600}
+
+  @media (max-width:880px){
+    .hero-grid,.story,.cta,.grid{grid-template-columns:1fr}
+    .hero-grid{gap:32px}
+    nav ul{display:none}
+    .cta{padding:36px 28px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav>
+  <span class="mark">Kiln &amp; Tide</span>
+  <ul>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#story">Studio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="kicker">Wheel-thrown · Boothbay Harbor, Maine</p>
+      <h1>Pieces fired<br>by the <em>tide</em>.</h1>
+      <p class="lede">A two-sister studio working slow batches of stoneware out of a clapboard barn fifty yards above the high-water line. We pull our clay bodies from kilns that breathe with the weather, and we glaze in the colors we wake up to.</p>
+      <div class="meta">
+        <span>Est. 2019</span>
+        <span>Open studio Saturdays 10–2</span>
+        <span>Salt-fire kiln · spring &amp; autumn</span>
+      </div>
+    </div>
+    <aside class="hero-aside">
+      <h3>The autumn salt-fire</h3>
+      <p>Our wood-and-salt kiln only fires twice a year. Pieces emerge with a flashed orange-peel skin no electric kiln can imitate.</p>
+      <p>Reserved pots ship the week the kiln cools. We post the unloading on the studio journal each season.</p>
+      <p class="when">Next opening: October 18</p>
+    </aside>
+  </div>
+</header>
+
+<div class="rule">Catalogue · Spring batch</div>
+
+<section id="shop">
+  <div class="section-head">
+    <h2>Four pieces, this batch.</h2>
+    <p>Everything is wheel-thrown, trimmed at leather-hard, and glazed by hand. Small variations are not flaws; they are the point.</p>
+  </div>
+  <div class="grid">
+
+    <article class="product">
+      <div class="frame">
+        <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="g1" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="#eef0e8"/><stop offset="100%" stop-color="#9eb1ad"/></radialGradient></defs>
+          <rect width="200" height="160" fill="url(#g1)"/>
+          <ellipse cx="100" cy="115" rx="38" ry="6" fill="#3d5651" opacity=".22"/>
+          <path d="M72 60 Q72 48 100 48 Q128 48 128 60 L130 110 Q130 122 100 122 Q70 122 70 110 Z" fill="#e6e0d2" stroke="#3d5651" stroke-width=".7"/>
+          <path d="M128 70 Q146 72 144 88 Q142 100 128 102" fill="none" stroke="#3d5651" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Foam Mug <span class="price">$42</span></h3>
+      <p class="glaze">Salt-celadon glaze · 12 oz</p>
+      <p>A wide-bellied morning mug with a thumb-rest pulled handle. Sized for a slow first cup before the day gets hold of you.</p>
+      <p class="care">Dishwasher fine; we still wash it by hand.</p>
+    </article>
+
+    <article class="product">
+      <div class="frame">
+        <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="g2" cx="50%" cy="40%" r="70%"><stop offset="0%" stop-color="#f0e8d8"/><stop offset="100%" stop-color="#a8512a"/></radialGradient></defs>
+          <rect width="200" height="160" fill="url(#g2)"/>
+          <ellipse cx="100" cy="118" rx="50" ry="8" fill="#7a3818" opacity=".25"/>
+          <path d="M50 80 Q50 60 100 60 Q150 60 150 80 Q150 110 100 116 Q50 110 50 80 Z" fill="#efe3cc" stroke="#7a3818" stroke-width=".7"/>
+          <path d="M55 80 Q100 92 145 80" fill="none" stroke="#7a3818" stroke-width=".8" opacity=".5"/>
+        </svg>
+      </div>
+      <h3>Harbor Bowl <span class="price">$58</span></h3>
+      <p class="glaze">Iron-rust over cream · 7&quot; rim</p>
+      <p>Wide enough for chowder or a heap of late-summer tomatoes. The rim catches a flash of rust where the iron pools.</p>
+      <p class="care">Holds heat well; warm before serving cold soups.</p>
+    </article>
+
+    <article class="product">
+      <div class="frame">
+        <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><linearGradient id="g3" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#dfd3b8"/><stop offset="100%" stop-color="#8b7c6c"/></linearGradient></defs>
+          <rect width="200" height="160" fill="url(#g3)"/>
+          <ellipse cx="100" cy="135" rx="22" ry="4" fill="#3d5651" opacity=".25"/>
+          <path d="M88 30 L88 50 Q78 56 78 75 L80 130 Q80 138 100 138 Q120 138 120 130 L122 75 Q122 56 112 50 L112 30 Z" fill="#d6c5a4" stroke="#5a4a36" stroke-width=".7"/>
+          <path d="M85 60 Q100 64 115 60" stroke="#5a4a36" stroke-width=".6" fill="none" opacity=".6"/>
+        </svg>
+      </div>
+      <h3>Driftwood Vase <span class="price">$74</span></h3>
+      <p class="glaze">Bare-clay foot · ash-wash neck · 9&quot; tall</p>
+      <p>A long-necked vessel with a weathered clay body. Holds a single branch of beach plum better than a whole bouquet.</p>
+      <p class="care">Glazed inside, watertight; outside left raw on purpose.</p>
+    </article>
+
+    <article class="product">
+      <div class="frame">
+        <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs><radialGradient id="g4" cx="40%" cy="40%" r="80%"><stop offset="0%" stop-color="#eaf0ed"/><stop offset="100%" stop-color="#3d5651"/></radialGradient></defs>
+          <rect width="200" height="160" fill="url(#g4)"/>
+          <ellipse cx="100" cy="125" rx="45" ry="6" fill="#1d2a31" opacity=".2"/>
+          <path d="M55 50 Q55 38 100 38 Q150 38 150 52 L154 110 Q154 124 100 124 Q50 124 52 110 Z" fill="#d3decb" stroke="#1d2a31" stroke-width=".7"/>
+          <path d="M152 60 Q172 64 168 90 Q164 108 150 110" fill="none" stroke="#1d2a31" stroke-width="3" stroke-linecap="round"/>
+          <path d="M50 38 Q70 30 100 32 Q130 34 150 38" stroke="#1d2a31" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <h3>Tide Pitcher <span class="price">$96</span></h3>
+      <p class="glaze">Atlantic-blue ash · 32 oz</p>
+      <p>A pour-friendly belly with a generous lip. The blue ash glaze breaks lighter on the high points where the kiln runs hottest.</p>
+      <p class="care">Pours cleanly cold or warm; not for stovetop.</p>
+    </article>
+
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="story-image" aria-hidden="true"></div>
+  <div>
+    <h2>Two sisters, one barn, one tide table.</h2>
+    <p>We grew up running the dock road in summer, learning that the working coast and the postcard coast are the same coast at different hours. After ten years apart — June throwing in Portland, Lila glazing in Bristol — we came home in 2019 and rebuilt our grandfather's lobster-gear barn into a studio.</p>
+    <blockquote>The tide tells you when to fire and when to walk away. We try to listen to both.</blockquote>
+    <p>We work in small batches because the salt kiln only opens twice a year, and because we still answer every email ourselves. Pieces are sold first to the people on our studio list, then through the door on Saturdays, then online if anything is left.</p>
+    <p class="sig">— June &amp; Lila Thatcher, Boothbay Harbor</p>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div>
+    <h2>Reserve a piece, or get on the studio list.</h2>
+    <p>The list goes out the morning the kiln cools. Slow, occasional, never sold.</p>
+    <p class="direct">Or write us directly: <a href="mailto:hello@kilnandtide.studio">hello@kilnandtide.studio</a></p>
+  </div>
+  <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Saved · we\\'ll write soon';this.querySelector('button').disabled=true;">
+    <label for="name">Your name</label>
+    <input id="name" name="name" type="text" required autocomplete="name">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required autocomplete="email">
+    <label for="note">A line about the piece you have in mind <span style="text-transform:none;letter-spacing:0;font-style:italic;color:rgba(243,237,225,.5)">(optional)</span></label>
+    <textarea id="note" name="note" rows="3"></textarea>
+    <button type="submit">Add me to the list</button>
+  </form>
+</section>
+
+<footer>
+  <span class="where"><strong>Kiln &amp; Tide Studio.</strong> 14 Atlantic Ave, Boothbay Harbor, ME 04538.</span>
+  <span>© June &amp; Lila Thatcher. Pieces are wheel-thrown one at a time.</span>
+</footer>
+
+</div>
+</body>
+</html>
