@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kiln &amp; Tide Agent Benchmark</title>
-  <meta name="description" content="Single-file benchmark dashboard comparing seven AI agent attempts at the same Kiln & Tide prompt.">
+  <meta name="description" content="Single-file benchmark dashboard comparing nine AI agent attempts at the same Kiln & Tide prompt.">
   <style>
     :root {
       --bg: #06131b;
@@ -922,7 +922,7 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
         <div class="section-head">
           <div>
             <span class="section-tag">Summary Table</span>
-            <h2>Seven attempts, one prompt, very different economics</h2>
+            <h2>Nine attempts, one prompt, very different economics</h2>
             <p class="section-copy">Sort by build time, agent count, or cost to see where orchestration helped and where it just added drag.</p>
           </div>
         </div>
@@ -981,7 +981,7 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
             <p>Anismin's redux pass is the inverse failure mode of KCS — not empty, just lazy. Same Opus 4.7 endpoint that previously shipped 16K of considered design returned a 2.5K Bootstrap-shaped wireframe with a third-party form endpoint baked in. Regressions are kept on the page on purpose: a benchmark that quietly hides bad runs is just a highlight reel.</p>
           </article>
         </div>
-        <p class="footer-note">All seven attempts are live and iframed above. Three external (Shimmer, Kimi, Boardroom) on their own GitHub Pages domains; four same-origin (anismin, meridian, kimiclaw, claude-cli) under <span class="mono">/Kiln-Tide-Bench/</span>. Use the &ldquo;view full &rarr;&rdquo; link on any card to open it standalone in a new tab.</p>
+        <p class="footer-note">All nine attempts are live and iframed above. Four external (Shimmer, Kimi, Boardroom, Anismin redux) on their own GitHub Pages domains; five same-origin (anismin, meridian, meridian-codex, kimiclaw, claude-cli) under <span class="mono">/Kiln-Tide-Bench/</span>. Use the &ldquo;view full &rarr;&rdquo; link on any card to open it standalone in a new tab.</p>
       </section>
     </main>
   </div>
@@ -1120,9 +1120,26 @@ studio's real site, not a template. One shot, ship the file.</code></pre>
         costValue: 0.2,
         statusLabel: "HALL OF SHAME",
         statusClass: "status-shame",
-        sourceUrl: "anismin-redux/",
+        sourceUrl: "https://angel-software-solutions-llc.github.io/anismin-anismin-task-kilntide/",
         previewKind: "remote",
-        note: "Same brain, second attempt — 2,495 bytes, 6.5× smaller than her own prior ship. Generic Arial, black void hero with no coastal palette, four identical grey cards, and a contact form that POSTs to a hardcoded formspree.io endpoint that is not Andrew's. Technically valid HTML, materially a tutorial template. Kept here as the regression line: same agent, worse output, no excuse."
+        note: "Same brain, second attempt — 2,495 bytes, 6.5× smaller than her own prior ship. Generic Arial, black void hero with no coastal palette, four identical grey cards, and a contact form that POSTs to a hardcoded formspree.io endpoint that is not Andrew's. Technically valid HTML, materially a tutorial template. Kept here as the regression line: same agent, worse output, no excuse. Source: her own Pages deployment at angel-software-solutions-llc.github.io/anismin-anismin-task-kilntide/."
+      },
+      {
+        rank: 9,
+        title: "Meridian Codex (trident)",
+        sourceAgent: "gpt-5.4 via trident :18796 — solo one-shot, 2026-05-01",
+        timeLabel: "31s",
+        timeMinutes: 0.5,
+        agentsLabel: "1",
+        agentCount: 1,
+        tokensLabel: "~7.2K",
+        costLabel: "~$0",
+        costValue: 0,
+        statusLabel: "OK",
+        statusClass: "status-ok",
+        sourceUrl: "meridian-codex/",
+        previewKind: "remote",
+        note: "Fresh codex pass requested by Andrew on 2026-05-01 to compare against the Opus-era Meridian solo (rank 5). 3,852 bytes, valid HTML, real coastal palette (sea-glass / kiln-rust / driftwood), four products with prices, named sisters (Mae and Eliza Warren), one-paragraph studio story, mailto contact. Half a minute end-to-end at zero marginal cost — the under-budget counterpoint to the boardroom and the regression."
       }
     ];
 
